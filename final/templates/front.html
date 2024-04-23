@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Choose according to your preference</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .button {
+        padding: 10px 20px;
+        margin-bottom: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Choose according to your preference</h1>
+    <div class="button-container">
+      <button class="button" onclick="window.location.href='search'">
+        Filter data by column
+      </button>
+      <button class="button" onclick="window.location.href='Voter_name'">
+        Filter data by company name
+      </button>
+      <button class="button" onclick="window.location.href='party'">
+        Filter data by Political party
+      </button>
+      <button class="button" onclick="window.location.href='four'">
+        From which company party got fund
+      </button>
+      <button class="button" onclick="window.location.href='five'">
+        To which party gave the company gave the fund
+      </button>
+      <button class="button" onclick="window.location.href='pie'">
+        Pie chart of total fund received by parties
+      </button>
+      <button class="button" onclick="window.location.href='extra'">
+        Polar pie chart of the company gave fund to which party
+    </div>
+  </body>
+</html>

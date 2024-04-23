@@ -1,0 +1,92 @@
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <form select name="search" method="post" action="/search">
+            <select name="search">
+                <option value="Date of Encashment">Date of Encashment</option>
+                <option value="Name of the Political Party">Name of the Political Party</option>
+                <option value="Encahsed Bond Number">Encashed Bond Number</option>
+                <option value="Denominations">Denominations</option>
+                <option value="Pay Branch Code">Pay Branch Code</option>
+                <option value="Pay Teller">Pay Teller</option>
+                <option value="Reference No (URN)">Reference No (URN)</option>
+                <option value="Journal Date">Journal Date</option>
+                <option value="Date of Purchase">Date of Purchase</option>
+                <option value="Date of Expiry">Date of Expiry</option>
+                <option value="Name of the Purchaser">Name of the Purchaser</option>
+                <option value="Prefix">Prefix</option>
+                <option value="Purchased Bond Number">Purchased Bond Number</option>
+                <option value="Purchased Denominations">Purchased Denominations</option>
+                <option value="Issue Branch Code">Issue Branch Code</option>
+                <option value="Issue Teller">Issue Teller</option>
+                <option value="Status">Status</option>
+            </select>
+            <input name="box" type="text" id="Bond Number">
+            <input id="search" type="submit">
+        
+        <table style="border-collapse: collapse; width: 100%;">
+            <thead>
+            {% if purchased_data %}
+            <tr style="background-color: #f2f2f2;">
+                <th style="border: 1px solid #ddd; padding: 8px;">Sr No.</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Reference No (URN)</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Journal Date</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Date of Purchase</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Date of Expiry</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Name of the Purchaser</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Prefix</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Purchased Bond Number</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Purchased Denominations</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Issue Branch Code</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Issue Teller</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Status</th>
+            </thead>
+            <tbody>
+            {% if purchased_data %}
+            {% for result in purchased_data %}
+            <tr>
+                {% for item in result %}
+                <td style="border: 1px solid #ddd; padding: 8px;">{{item}}</td>
+                {% endfor %}
+            </tr>  
+            {% endfor %}
+            {% endif %}
+            {% endif %}
+            </tbody>
+        </table>
+        <table style="border-collapse: collapse; width: 100%;">
+            <thead>
+            {% if encash_data %}
+            <tr style="background-color: #f2f2f2;">
+                <th style="border: 1px solid #ddd; padding: 8px;">Sr No.</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Date of Encashment</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Name of the Political Party</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Account no. of Political Party</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Prefix</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Bond Number</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Denominations</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Pay Branch Code</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Pay Teller</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if encash_data %}
+            {% for result in encash_data %}
+            <tr>
+                {% for item in result %}
+                <td style="border: 1px solid #ddd; padding: 8px;">{{item}}</td>
+                {% endfor %}
+            </tr>  
+            {% endfor %}
+            {% endif %}
+            {% endif %}
+            </tbody>
+        </table>
+        {{no_data}}
+
+    </body>
+
+</html>
