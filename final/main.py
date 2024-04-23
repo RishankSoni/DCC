@@ -48,8 +48,8 @@ def search():
                     return render_template("search.html", encash_data = data)       
         else:
              return render_template("search.html",no_data = "No data found")
-                
-    return render_template("search.html")
+    else:
+        return render_template("search.html")
         
     
     
@@ -90,7 +90,10 @@ def four():
             
             data = cursor.fetchall()
             cursor.close()
-            return render_template("four.html", voter_data = data)
+            sum=0
+            for i in data:
+                sum+= i[2]
+            return render_template("four.html", voter_data = data, sum = sum)
         return render_template("four.html")
 
 @app.route('/five', methods = ["POST", "GET"])
@@ -103,7 +106,10 @@ def five():
             
             data = cursor.fetchall()
             cursor.close()
-            return render_template("five.html", voter_data = data)
+            sum=0
+            for i in data:
+                sum+= i[2]
+            return render_template("five.html", voter_data = data , sum = sum)
         return render_template("five.html")
 
 @app.route('/pie', methods = ["POST", "GET"])

@@ -2,12 +2,13 @@
   <head> </head>
 
   <body>
-    <form method="post" action="/extra">
+    <form method="post" action="/five">
       <label for="box">Enter of company:</label>
       <input name="boxes" type="text" />
       <input id="search" type="submit" />
     </form>
     {% if voter_data %}
+    <h2>Sum of all values is {{sum}}</h2>
     <table style="border-collapse: collapse; width: 100%">
       <thead>
         <tr style="background-color: #f2f2f2">
