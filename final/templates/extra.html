@@ -1,0 +1,89 @@
+<html>
+  <head> </head>
+
+  <body>
+    <form method="post" action="/extra">
+      <label for="box">Enter of poltical party:</label>
+      <input name="boxes" type="text" />
+      <input id="search" type="submit" />
+    </form>
+    {% if voter_data %}
+    <h1>hi</h1>
+    <table style="border-collapse: collapse; width: 100%">
+      <thead>
+        <tr style="background-color: #f2f2f2">
+          <th style="border: 1px solid #ddd; padding: 8px">Party Name</th>
+          <th style="border: 1px solid #ddd; padding: 8px">Company name</th>
+          <th style="border: 1px solid #ddd; padding: 8px">
+            Total value of bonds (In rupees)
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for result in voter_data %}
+        <tr>
+          {% for item in result %}
+          <td style="border: 1px solid #ddd; padding: 8px">{{item}}</td>
+          {% endfor %}
+        </tr>
+
+        {% endfor %}
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <canvas id="myChart"></canvas>
+
+        <button onclick="downloadChart()">Download Chart</button>
+
+        <script>
+          var x = {{voter_data|tojson}};
+          var ctx = document.getElementById("myChart").getContext("2d");
+          var myChart = new Chart(ctx, {
+            type: "polarArea",
+            data: {
+              labels: x.map((item) => item[0]),
+              datasets: [
+                {
+                  label: "Total value of bonds (In rupees)",
+                  data: x.map((item) => item[2]),
+                  backgroundColor: [
+                    "rgba(255, 99, 132, 0.2)",
+                    "rgba(54, 162, 235, 0.2)",
+                    "rgba(255, 206, 86, 0.2)",
+                    "rgba(75, 192, 192, 0.2)",
+                    "rgba(153, 102, 255, 0.2)",
+                    "rgba(255, 159, 64, 0.2)",
+                  ],
+                  borderColor: [
+                    "rgba(255, 99, 132, 1)",
+                    "rgba(54, 162, 235, 1)",
+                    "rgba(255, 206, 86, 1)",
+                    "rgba(75, 192, 192, 1)",
+                    "rgba(153, 102, 255, 1)",
+                    "rgba(255, 159, 64, 1)",
+                  ],
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              scales: {
+                r: {
+                  suggestedMin: 0,
+                  suggestedMax: 20,
+                },
+              },
+            },
+          });
+
+          function downloadChart() {
+            var downloadLink = document.createElement("a");
+            downloadLink.href = document.getElementById("myChart").toDataURL("image/png");
+            downloadLink.download = "chart.png";
+            downloadLink.click();
+          }
+        </script>
+
+        {% endif %}
+      </tbody>
+    </table>
+  </body>
+</html>
