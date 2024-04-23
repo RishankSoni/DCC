@@ -8,8 +8,12 @@ First Convert The pdf to csv using fitz from the Code in the convertor.py code
 
 ## Installation
 Create a database named 'bonds' in SQL.
-You are provided with sql dump import the dump into the mysql.
-Create a user in SQL using the command below. CREATE USER 'testing'@'%' IDENTIFIED BY 'password'; GRANT ALL PRIVILEGES ON . TO 'testing'@'%' WITH GRANT OPTION;
+You are provided with sql dump import the dump into the MySQL.
+
+Create a user in SQL using the command below. 
+CREATE USER 'testing'@'%' IDENTIFIED BY 'password'; 
+GRANT ALL PRIVILEGES ON . TO 'testing'@'%' WITH GRANT OPTION;
+
 Open terminal, and install flask and flask-mysqldb by following command. pip install Flask Flask-MySQLdb
 Open the main.py file, on the first line of code write your MYSQL password as string.
 Run the main.py file, website will be live on localhost.
